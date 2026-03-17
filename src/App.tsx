@@ -1,21 +1,64 @@
-import { Button } from "@/components/ui/button"
+import { OrbitControls, Stars } from '@react-three/drei'
+import React, { Suspense, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
+import { Object3D } from "three";
 
-export function App() {
-  return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
-    </div>
-  )
+
+function IslandModel() {
+  const gltf = useGLTF("/models/Isla.glb");
+  // const gltf = useGLTF("/models/isla.glb");
+  const ref = useRef<Object3D>(null); // ✅ inicializado correctamente
+
+  useFrame(() => {
+    if (ref.current) {
+      ref.current.rotation.y += 0.002;
+    }
+  });
+
+  return <primitive ref={ref} object={gltf.scene} />;
 }
 
-export default App
+export default function IslandScene() {
+  return (
+      <Canvas style={{ width: '100vw', height: '100vh' }}>
+        <ambientLight intensity={0.5} />           {/* luz ambiental */}
+        <directionalLight position={[5, 5, 5]} />  {/* luz direccional */}
+
+        <pointLight position={[10, 10, 10]} />
+        <Suspense fallback={null}>
+          <IslandModel />
+        </Suspense>
+        <Stars />
+        <OrbitControls /> {/* Permite mover la cámara con el ratón */}
+      </Canvas>
+  );
+}
+
+
+
+// import { Canvas } from '@react-three/fiber'
+// import { OrbitControls, Stars } from '@react-three/drei'
+
+// function Box() {
+//   return (
+//     <mesh rotation={[10, 10, 0]}>
+//       <boxGeometry args={[1, 1, 1]} />
+//       <meshStandardMaterial color="orange" />
+//     </mesh>
+//   )
+// }
+
+// export default function App() {
+//   return (
+//     <div style={{ width: '100vw', height: '100vh' }}>
+//       <Canvas>
+//         <ambientLight intensity={0.5} />
+//         <pointLight position={[10, 10, 10]} />
+//         <Box />
+//         <Stars />
+//         <OrbitControls /> {/* Permite mover la cámara con el ratón */}
+//       </Canvas>
+//     </div>
+//   )
+// }
