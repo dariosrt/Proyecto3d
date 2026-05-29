@@ -1,6 +1,7 @@
 ﻿import Caracteristicas from './components/sections/Caracteristicas'
 import Footer from './components/sections/Footer'
 import Hero from './components/sections/Hero'
+import Localizacion from './components/sections/Localizacion'
 import Navbar from './components/sections/Navbar'
 
 export default function App() {
@@ -9,6 +10,7 @@ export default function App() {
       <Navbar />
       <Hero />
       <Caracteristicas />
+      <Localizacion />
       <Footer />
     </div>
   )
