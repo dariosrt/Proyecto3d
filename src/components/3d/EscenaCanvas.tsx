@@ -20,7 +20,7 @@ function IslandModel() {
 export default function EscenaCanvas() {
   return (
     <div className="h-full w-full rounded-[1.5rem] bg-slate-950/80">
-      <Canvas camera={{ position: [0, 1.4, 4], fov: 40 }} className="h-full w-full">
+      <Canvas camera={{ position: [0, 14, 90], fov: 40 }} className="h-full w-full">
         <ambientLight intensity={0.6} />
         <directionalLight position={[5, 5, 5]} intensity={0.7} />
         <pointLight position={[-8, 5, -5]} intensity={0.4} />

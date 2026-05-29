@@ -1,29 +1,28 @@
-﻿export default function Footer() {
-  return (
-    <footer id="contact" className="border-t border-border/80 bg-background/90 px-6 py-10 lg:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-secondary-foreground">IES Albarregas</p>
-          <p className="mt-4 max-w-lg text-sm leading-7 text-muted-foreground">
-            Formación profesional en tecnología, diseño y patrimonio cultural con una mirada hacia el futuro.
-          </p>
-        </div>
+﻿import FluidTitle from "../ui/FluidTitle";
 
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
-          <a href="#home" className="text-sm text-foreground/80 transition hover:text-foreground">
-            Privacidad
-          </a>
-          <a href="#home" className="text-sm text-foreground/80 transition hover:text-foreground">
-            Términos
-          </a>
-          <a href="#contact" className="text-sm text-foreground/80 transition hover:text-foreground">
-            Contacto
-          </a>
+export default function Footer() {
+  return (
+    <footer className="border-t border-border/80 bg-background/95 px-6 py-10 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="space-y-2">
+          <FluidTitle
+            text="IES Albarregas" 
+            className="text-sm font-semibold uppercase tracking-[0.2em] text-foreground"
+          />
+          <FluidTitle
+            text="Plataforma informativa del catálogo de títulos del centro educativo. Diseñado respetando las guías de estilo institucionales y la integración de módulos WebGL de rendimiento optimizado." 
+            className="max-w-xl text-xs leading-6 text-muted-foreground"
+          />
         </div>
+      <FluidTitle
+        text="Coordenadas de Referencia: Mérida, España" 
+        className="flex gap-6 text-xs font-mono text-muted-foreground"
+      />
       </div>
-      <div className="mt-8 border-t border-border/80 pt-6 text-center text-sm text-muted-foreground">
-        © 2024 IES Albarregas. Todos los derechos reservados.
-      </div>
+      <FluidTitle
+        text="© 2026 Instituto de Educación Secundaria Albarregas. Documentación Informativa Oficial." 
+        className="mt-8 border-t border-border/60 pt-6 text-center text-xs text-muted-foreground/60"
+      />
     </footer>
   )
 }

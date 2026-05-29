@@ -129,14 +129,13 @@ export default function Hero() {
             <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-tr from-primary/10 via-transparent to-sky-500/5 pointer-events-none" />
             <div className="relative flex h-140 min-h-105 flex-col gap-4 overflow-hidden rounded-[1.75rem] border border-white/5 bg-slate-950 p-6">
               
-              {/* Aquí se inyecta el lienzo de Three.js */}
               <div className="flex h-full items-center justify-center overflow-hidden rounded-[1.5rem] bg-slate-950/50 shadow-inner">
                 <EscenaCanvas />
               </div>
 
               <div className="space-y-1 text-center">
                 <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground/80 font-mono font-bold">
-                  Documentación Tridimensional
+                  Acueducto de los milagros
                 </p>
                 <p className="text-[11px] text-slate-400">
                   Modelo a escala optimizado (Low Poly) del Acueducto de los Milagros.

@@ -7,7 +7,7 @@ import Navbar from './components/sections/Navbar'
 export default function App() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
+      {/* <Navbar /> */}
       <Hero />
       <Caracteristicas />
       <Localizacion />

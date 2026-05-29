@@ -54,7 +54,7 @@ export default function Caracteristicas() {
 
         <div className="mt-12 flex flex-col items-center justify-center gap-4 text-center">
           <p className="max-w-2xl text-base leading-7 text-muted-foreground">
-            Únete a una educación que entiende el presente y prepara para los retos del mañana.
+            Educación con vista al futuro
           </p>
           <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
             Ver programas disponibles
