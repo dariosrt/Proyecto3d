@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L, { type LatLngExpression, type Map as LeafletMap } from "leaflet";
+import "leaflet/dist/leaflet.css";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
@@ -17,8 +18,6 @@ export default function Mapa() {
   const coordenadas: LatLngExpression = [38.92444444, -6.34805556]; 
   const mapRef = useRef<LeafletMap | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  
-  const [dimensions, setDimensions] = useState({ width: 400, height: 400 });
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -30,9 +29,6 @@ export default function Mapa() {
 
     const updateSize = () => {
       if (containerRef.current) {
-        const width = containerRef.current.getBoundingClientRect().width;
-        setDimensions({ width, height: width });
-        
         setTimeout(() => {
           if (mapRef.current) {
             mapRef.current.invalidateSize({ animate: false });
@@ -58,24 +54,13 @@ export default function Mapa() {
 
   return (
     <div ref={containerRef} className="w-full max-w-[420px] mx-auto p-2">
-      {/* MÁSCARA DE HARDWARE ULTRARROBUSTA:
-        - clip-path: [circle(50%_at_50%_50%)] Recorta geométricamente los clics del ratón, 
-          impidiendo que se pueda arrastrar desde fuera de la circunferencia.
-      */}
-      <div 
-        className="relative border border-border bg-slate-950 shadow-2xl overflow-hidden select-none"
-        style={{
-          width: `${dimensions.width}px`,
-          height: `${dimensions.height}px`,
-          clipPath: "circle(50% at 50% 50%)",
-          WebkitClipPath: "circle(50% at 50% 50%)" // Compatibilidad con Safari/iOS
-        }}
+      <div className="aspect-square w-full overflow-hidden border border-border shadow-2xl"
       >
         <MapContainer 
           center={coordenadas} 
           zoom={16} 
           style={{ height: "100%", width: "100%" }}
-          className="map_container text-slate-900"
+          className="map_container h-full w-full text-slate-900"
           dragging={true}
           scrollWheelZoom={false} // Desactivamos scroll para no entorpecer la lectura de la página
           ref={(map) => {
